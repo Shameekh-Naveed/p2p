@@ -4,6 +4,8 @@ import threading
 import random
 import hashlib
 
+from nodeconnection import NodeConnection
+
 # TODO: Also create events when things go wrong, like a connection with a node has failed.
 
 
@@ -229,8 +231,7 @@ class Node(threading.Thread):
            to create the actual new connection. The reason for this method is to be able to override the
            connection class if required. In this case a NodeConnection will be instantiated to represent
            the node connection."""
-        # TODO: Implement NodeConnection
-        # return NodeConnection(self, connection, id, host, port)
+        return NodeConnection(self, connection, id, host, port)
 
     def reconnect_nodes(self):
         """This method checks whether nodes that have the reconnection status are still connected. If not
